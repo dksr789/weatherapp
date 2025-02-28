@@ -1,0 +1,510 @@
+:root {
+  --primary-color: #1e88e5;
+  --secondary-color: #0d47a1;
+  --text-color: #333;
+  --text-light: #666;
+  --background-light: #f5f5f5;
+  --background-dark: #333;
+  --card-bg: #fff;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--background-light);
+  color: var(--text-color);
+}
+
+.weather-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.weather-sidebar {
+  width: 240px;
+  background: linear-gradient(to bottom, #1e88e5, #1976d2);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-info {
+  margin-bottom: 40px;
+}
+
+.location-icon {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.location-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.location-info p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.current-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.weather-icon-large {
+  margin-bottom: 20px;
+  font-size: 40px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.current-temp {
+  font-size: 60px;
+  font-weight: 300;
+}
+
+.weather-details {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.weather-detail-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.weather-detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.detail-icon {
+  margin-right: 8px;
+}
+
+.detail-value {
+  font-weight: 600;
+}
+
+.sun-times {
+  margin-top: auto;
+}
+
+.sun-time-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 10px;
+}
+
+.sun-icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.sun-time {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sun-time-info {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-left: auto;
+}
+
+/* Main Content Styles */
+.weather-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.weather-title h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.weather-title p {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.city-search {
+  display: flex;
+  background-color: var(--background-light);
+  border-radius: 20px;
+  padding: 5px 15px;
+  width: 250px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+
+.search-button:hover {
+  color: var(--primary-color);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Forecast Styles */
+.weather-forecast {
+  margin-bottom: 30px;
+}
+
+.forecast-tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.forecast-tab {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.forecast-tab.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.forecast-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Existing styles */
+
+/* Add a special style for today and tomorrow with larger size */
+.forecast-day.large {
+  width: 100%;  /* Make the box bigger */
+  padding: 30px;  /* Increase padding */
+  font-size: 1.5rem;  /* Increase font size */
+}
+
+.forecast-day-name {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.forecast-icon {
+  margin: 20px 0; /* Increase margin for better spacing */
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
+}
+
+.forecast-temp {
+  font-size: 30px;  /* Increase temperature size */
+  font-weight: 600;
+}
+
+.forecast-condition {
+  font-size: 18px;  /* Increase font size for condition text */
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+.forecast-tab.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* For larger mobile screens, ensure it still looks good */
+@media (max-width: 768px) {
+  .forecast-day.large {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .forecast-temp {
+    font-size: 26px;
+  }
+
+  .forecast-condition {
+    font-size: 16px;
+  }
+}
+
+
+
+.forecast-day {
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  margin: 0 5px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.forecast-day:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day-name {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.forecast-icon {
+  margin: 15px 0;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
+}
+
+.forecast-temp {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Other Cities Styles */
+.other-cities {
+  margin-top: 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nav-buttons {
+  display: flex;
+}
+
+.nav-button {
+  background: none;
+  border: 1px solid #ddd;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.2s;
+}
+
+.nav-button:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.city-card {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.city-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.city-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.city-info p {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.city-weather {
+  display: flex;
+  align-items: center;
+}
+
+.weather-icon {
+  margin-right: 10px;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
+}
+
+.city-temp {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .weather-app {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .weather-sidebar {
+    width: 100%;
+  }
+  
+  .forecast-days {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .forecast-day {
+    min-width: 120px;
+  }
+  
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loading and Error States */
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: var(--text-light);
+}
+
+.error {
+  color: #e53935;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.weather-app {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.forecast-tabs {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.forecast-tab {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background-color: #f0f2f5;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-align: center;
+}
+
+.forecast-tab.active {
+  background-color: #14304b;
+  color: white;
+}
+
+
+/* Add to your CSS file (e.g., citysearch.css) */
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
